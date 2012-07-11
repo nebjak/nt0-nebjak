@@ -1,0 +1,17 @@
+{
+  "name": "nt0",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.11",
+    "ejs": ">= 0.0.1",
+    "coffee-script": "~1.3.3"
+  },
+  "subdomain": "nt0-nebjak",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "v0.6.19"
+  }
+}
