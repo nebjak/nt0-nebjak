@@ -31,10 +31,18 @@ app.configure('production', function(){
 });
 
 /**
+ * Load Socket.io
+ */
+
+require('./controllers/socket-io')(app);
+
+/**
  * Load controllers
  */
 require('./controllers/home')(app);
 require('./controllers/info')(app);
+require('./controllers/iobot')(app);
+
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
