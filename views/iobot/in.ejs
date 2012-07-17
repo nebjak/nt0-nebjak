@@ -1,0 +1,37 @@
+<h1><%= title %></h1>
+<p>
+  <form id="messenger" action="/iobot/in" method="post">
+    <label for="message">Message:</label>
+    <input id="message" name="message" type="text" />
+    <input id="send_btn" type="submit" value="Send" />
+    <img src="/images/loading.gif" id="ajax_loader" alt="Šalje se..." title="Šalje se..." style="vertical-align: middle;" />
+  </form>
+</p>
+<script>
+  //var socket = io.connect('http://localhost:3000');
+  var socket = io.connect(document.location.host);
+  socket.on('info', function (data) {
+    console.log(data);
+  });
+  $(function() {
+    $("#messenger").submit(function() {
+      var message = $("#message").val();
+      $.post(
+        '/iobot/in',
+        { message: message },
+        function(data) {
+          alert('Message sent!');
+        }
+      );
+      return false;
+    });
+    $('#ajax_loader')
+      .hide()  // hide it initially
+      .ajaxStart(function() {
+          $(this).show();
+      })
+      .ajaxStop(function() {
+        $(this).hide();
+    });
+  });
+</script>
