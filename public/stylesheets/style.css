@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+#chatbox {
+  font-family: Monaco, Menlo, monospace;
+  font-size: 10pt;
+}
+
+#chatbox table tr:nth-child(even) {
+  background-color: #ccc;
+}
