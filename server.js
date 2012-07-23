@@ -42,6 +42,7 @@ require('./controllers/socket-io')(app);
 require('./controllers/home')(app);
 require('./controllers/info')(app);
 require('./controllers/iobot')(app);
+require('./controllers/chaty')(app);
 
 
 app.listen(3000, function(){
