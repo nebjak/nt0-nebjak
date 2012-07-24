@@ -2,3 +2,5 @@ TODO
 *.swp
 node_modules
 npm-debug.log
+logs
+*.pid

@@ -1,0 +1,33 @@
+#!/bin/bash
+DIR=/home/nebjak/c0d3/PaaS/Nodejitsu/nt0
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NODE_PATH=/usr/local/lib/node_modules
+NODE=/usr/local/bin/node
+APP_NAME=nt0
+
+test -x $NODE || exit 0
+
+function start_app {
+  NODE_ENV=production nohup "$NODE" "$DIR/server.js" 1>>"$DIR/logs/server.log" 2>&1 &
+  echo $! > "$DIR/$APP_NAME.pid"
+  echo "$APP_NAME started"
+}
+
+function stop_app {
+  kill `cat $DIR/$APP_NAME.pid`
+  echo "$APP_NAME stoped!"
+}
+
+case $1 in
+   start)
+      start_app ;;
+    stop)
+      stop_app ;;
+    restart)
+      stop_app
+      start_app
+      ;;
+    *)
+      echo "usage: ./bin/init {start|stop}" ;;
+esac
+exit 0
