@@ -1,6 +1,6 @@
 {
   "name": "nt0",
-  "version": "0.3.5",
+  "version": "0.3.5-1",
   "private": true,
   "dependencies": {
     "express": "2.5.11",
